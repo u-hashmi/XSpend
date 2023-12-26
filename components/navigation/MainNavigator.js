@@ -3,14 +3,18 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
 import HomeScreen from "../screens/HomeScreen";
-import AboutScreen from "../screens/AboutScreen";
+import LoansScreen from "../screens/LoansScreen";
 import SettingScreen from "../screens/SettingScreen";
 import EntryScreen from "../home/EntryScreen";
+import LoanEntryScreen from "../loans/LoanEntryScreen";
+import CreditCardEntry from "../loans/CreditCardEntry";
 import { ThemeContext } from '../common/GlobalTheme';
 import { Icons, IconLibrary } from "../common/GlobalIcons";
+import { BlurView } from 'expo-blur';
 
 const Tab = createBottomTabNavigator();
 const HomeStack = createStackNavigator();
+const LoansStack = createStackNavigator();
 
 const HomeStackNavigator = () => {
     const { theme } = useContext(ThemeContext);
@@ -27,6 +31,22 @@ const HomeStackNavigator = () => {
     );
   };
 
+  const LoanStackNavigator = () => {
+    const { theme } = useContext(ThemeContext);
+  
+    return (
+      <LoansStack.Navigator
+        screenOptions={{
+          headerShown: false,
+        }}
+      >
+        <LoansStack.Screen name="LoansScreen" component={LoansScreen} />
+        <LoansStack.Screen name="LoanEntryScreen" component={LoanEntryScreen} />
+        <LoansStack.Screen name="CreditCardEntry" component={CreditCardEntry} />
+      </LoansStack.Navigator>
+    );
+  };
+
 const MainNavigator = () => {
   const { theme } = useContext(ThemeContext);
   const NAVBAR = theme.NAVBAR;
@@ -40,8 +60,8 @@ const MainNavigator = () => {
 
             if (route.name === "HomeStack") {
               iconName = focused ? Icons.Home : Icons.HomeOutline;
-            } else if (route.name === "About") {
-              iconName = focused ? Icons.About : Icons.AboutOutline;
+            } else if (route.name === "LoanStack") {
+              iconName = focused ? Icons.Loan : Icons.LoanOutline;
             } else if (route.name === "Setting") {
               iconName = focused ? Icons.Setting : Icons.SettingOutline;
             }
@@ -50,12 +70,19 @@ const MainNavigator = () => {
           tabBarActiveTintColor: NAVBAR.iconColor,
           tabBarInactiveTintColor: NAVBAR.iconInactiveColor,
           tabBarShowLabel: false,
-          tabBarStyle: { position: 'absolute', backgroundColor: COLORS.white },
+          tabBarStyle: { position: 'absolute' },
+          tabBarBackground: () => (
+            <BlurView
+              style={{ flex: 1 }}
+              tint="light"
+              intensity={100} 
+            />
+          ),
           headerShown: false
         })}
       >
         <Tab.Screen name="HomeStack" component={HomeStackNavigator} />
-        <Tab.Screen name="About" component={AboutScreen} />
+        <Tab.Screen name="LoanStack" component={LoanStackNavigator} />
         <Tab.Screen name="Setting" component={SettingScreen} />
       </Tab.Navigator>
     </NavigationContainer>

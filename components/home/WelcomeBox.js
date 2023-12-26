@@ -17,7 +17,7 @@ const WelcomeBox = ({ username, message = null }) => {
 
   const toggleDarkMode = () => {
     setDarkModeToggled(!darkModeToggled);
-    toggleTheme(); // Call the toggleTheme function from context
+    toggleTheme();
   };
 
   return (
@@ -32,9 +32,9 @@ const WelcomeBox = ({ username, message = null }) => {
         <TouchableOpacity onPress={toggleDarkMode} style={styles.toggleContainer}>
           <Text style={[theme.FONTS.body, { color: theme.COLORS.fontTheme }]}>Dark Mode</Text>
           {darkModeToggled ? (
-            <FontAwesome name='toggle-off' size={32} color={theme.COLORS.primary} />
+            <FontAwesome name='toggle-on' size={32} color={theme.COLORS.primary} />
           ) : (
-            <FontAwesome name='toggle-on' size={32} color={theme.COLORS.secondary} />
+            <FontAwesome name='toggle-off' size={32} color={theme.COLORS.secondary} />
           )}
         </TouchableOpacity>
       </View>

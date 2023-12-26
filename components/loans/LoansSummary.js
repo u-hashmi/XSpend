@@ -4,7 +4,7 @@ import { ThemeContext } from '../common/GlobalTheme'
 import GlobalStyles from '../common/GlobalStyles'
 import { getUserData, saveUserData } from '../../database/Database'
 
-const SummaryRender = ({ monthlyTotal, total }) => {
+const LoansSummary = ({ monthlyTotal = 1000, total = 500 }) => {
   const { theme } = useContext(ThemeContext)
   const globalStyles = GlobalStyles(theme)
   const styles = getStyles(theme)
@@ -148,4 +148,4 @@ const getStyles = (theme) =>
     },
   })
 
-export default SummaryRender
+export default LoansSummary

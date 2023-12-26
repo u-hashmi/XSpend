@@ -13,9 +13,10 @@ const GlobalStyles = (theme) => StyleSheet.create({
     fontSize: theme.SIZES.fontMedium,
     paddingBottom: theme.SIZES.paddingSmall,
     justifyContent: 'space-between',
-    alignItems: 'center',
-    borderBottomWidth: 0.2,
-    borderColor: theme.COLORS.primary
+    alignItems: 'center'
+  },
+  noMargin:{
+    margin: 0,
   },
   alignLeft: {
     justifyContent: 'flex-end',
@@ -72,6 +73,16 @@ const GlobalStyles = (theme) => StyleSheet.create({
   superScriptStyle: {
     fontFamily: 'Arial',
   },
+  textLeft:{
+    justifyContent: 'center',
+    alignItems: 'flex-end',
+    textAlign: 'left',
+  },
+  spaceBetween: {
+    flex: 1,
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  }
 });
 
 export default GlobalStyles;

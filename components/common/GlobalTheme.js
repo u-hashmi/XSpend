@@ -9,7 +9,7 @@ const ThemeProvider = ({ children }) => {
   };
 
   const MainColorPrimary = '#ffffff'
-  const MainCounterColor = '#000000'
+  const MainCounterColor = '#141414'
 
   const ACCENT_DRAWN = isDarkMode ? MainColorPrimary : MainCounterColor
   const COUNTER_DRAWN = isDarkMode ? MainCounterColor : MainColorPrimary
@@ -17,16 +17,19 @@ const ThemeProvider = ({ children }) => {
   const COLORS = {
     primary: ACCENT_DRAWN,
     secondary: ACCENT_DRAWN + '99',
-    borderColor: ACCENT_DRAWN + '33',
+    borderColor: ACCENT_DRAWN + '55',
     fontTheme: ACCENT_DRAWN,
     fontThemeSub: ACCENT_DRAWN + '99',
     white: COUNTER_DRAWN,
+    lightAccent: ACCENT_DRAWN + '11',
     black: '#2c3e50',
     gray: '#95a5a6',
     lightGray: '#ecf0f1',
     darkGray: '#7f8c8d',
     transparent: 'transparent',
-    red: '#E94F37'
+    red: '#E94D35',
+    green: '#393E41',
+    isLight: MainColorPrimary,
   }
 
   const NAVBAR = {
@@ -63,6 +66,7 @@ const ThemeProvider = ({ children }) => {
     fontMedium: 20,
     fontSmall: 16,
     fontXSmall: 12,
+    borderWidth: 0.2
   }
 
   const FONTS = {
@@ -124,12 +128,12 @@ const ThemeProvider = ({ children }) => {
       shadowColor: COLORS.black,
       shadowOffset: {
         width: 0,
-        height: 3,
+        height: 0,
       },
       shadowOpacity: 0.1,
       shadowRadius: 3,
       elevation: 1,
-      borderWidth: 1,
+      borderWidth: SIZES.borderWidth/2,
       borderColor: COLORS.borderColor,
     },
     otherShadow: {
